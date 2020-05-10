@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadSearch {
+
     public static void main(String[] args) {
         List<List<String>> sentences = new LinkedList<>();
         List<String> oneSentenceOfWords = new LinkedList<>();
@@ -66,6 +67,9 @@ public class ReadSearch {
                     }
                 }
             }
+
+
+
             try {
                 int sentenceNum;
                 int wordNum;
@@ -84,13 +88,15 @@ public class ReadSearch {
 
                     System.out.println("enter word number");
                     wordNum = keyboard.nextInt();
-                    if ((wordNum > oneSentenceOfWords.size()) || (wordNum < 1)) {
-                        System.out.println("invalid, " + oneSentenceOfWords.size() + " word(s)");
+                    if ((wordNum >= oneSentenceOfWords.size()) || (wordNum < 1)) {
+                        System.out.println("invalid, " + (oneSentenceOfWords.size()-1) + " word(s)");
                     } else {
                         break;
                     }
                 }
-
+               /* for (int i = 0; i < sentences.size(); i++){
+                    System.out.println(sentences.get(i));
+                }*/
                 System.out.println(oneSentenceOfWords.get(wordNum-1));
                 System.exit(0);
             } catch (InputMismatchException ime) {
