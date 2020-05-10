@@ -97,7 +97,7 @@ public class ReadSearch {
                /* for (int i = 0; i < sentences.size(); i++){
                     System.out.println(sentences.get(i));
                 }*/
-                System.out.println(oneSentenceOfWords.get(wordNum-1));
+                System.out.println(oneSentenceOfWords.get(wordNum));
                 System.exit(0);
             } catch (InputMismatchException ime) {
                 System.out.println("input mismatch exception");
@@ -115,14 +115,14 @@ public class ReadSearch {
 
 
         catch (FileNotFoundException e) {
-                    System.out.println("Error opening the file " + fileName);
-                }
+            System.out.println("Error opening the file " + fileName);
+        }
 
         finally {
-                    if (inputStream != null) {
-                        inputStream.close();
-                    }
-                }
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
 
 
 
