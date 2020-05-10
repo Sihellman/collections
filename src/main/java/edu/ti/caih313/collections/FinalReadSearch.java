@@ -7,8 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ReadSearch {
-
+public class FinalReadSearch {
     public static void main(String[] args) {
         List<List<String>> sentences = new LinkedList<>();
         List<String> oneSentenceOfWords = new LinkedList<>();
@@ -32,43 +31,28 @@ public class ReadSearch {
                 for (int i = 0; i < array.length; i++) {
                     array[i] = line.charAt(i);
                 }
-
                 for (int i = 0; i < array.length; i++) {
-
-                    if ((i == 0) && (word != "")) {
+                    if ((i == 0) && (!word.equals(""))){
+                        oneSentenceOfWords.add(word);
+                        word = "";
+                        word += array[i];
+                    }
+                    else if((array[i] != ' ') && (array[i] != '.') && (array[i] != '?') && (array[i] != '!') && (array[i] != ',')){
+                        word += array[i];
+                    }
+                    else if((array[i] == ' ') && (!word.equals(""))){
                         oneSentenceOfWords.add(word);
                         word = "";
                     }
-
-                    if ((array[i] != ' ') && (array[i] != '.') && (array[i] != '?') && (array[i] != '!')){
-                        word += array[i];
-                    }
-                    if (i != array.length - 1){
-                        if((array[i] == '.') && (array[i + 1] != ' ')){
-                            word += array[i];
-                        }
-                    }
-
-
-                    if (((array[i] == ' ') && (i != 0)) || (i == array.length - 1)) {
-
-                        if (((array[i - 1] != '.') || (array[i - 1] != '?') || (array[i - 1] != '!')) && (array[i - 1] != ' ')) {
-                            oneSentenceOfWords.add(word);
-                            word = "";
-
-                        }
-                    }
-
-                    if (((array[i] == '.') && ((i == array.length - 1) || (array[i + 1] == ' '))) || (array[i] == '?') || (array[i] == '!')){
+                    if ((array[i] == '.') || (array[i] == '?') || (array[i] == '!')){
                         oneSentenceOfWords.add(word);
                         sentences.add(oneSentenceOfWords);
                         oneSentenceOfWords = new LinkedList<>();
                         word = "";
                     }
+
                 }
             }
-
-
 
             try {
                 int sentenceNum;
@@ -88,8 +72,8 @@ public class ReadSearch {
 
                     System.out.println("enter word number");
                     wordNum = keyboard.nextInt();
-                    if ((wordNum >= oneSentenceOfWords.size()) || (wordNum < 1)) {
-                        System.out.println("invalid, " + (oneSentenceOfWords.size()-1) + " word(s)");
+                    if ((wordNum > oneSentenceOfWords.size()) || (wordNum < 1)) {
+                        System.out.println("invalid, " + (oneSentenceOfWords.size()) + " word(s)");
                     } else {
                         break;
                     }
@@ -111,8 +95,8 @@ public class ReadSearch {
                 //System.out.println(nfe.getMessage());
 
             }
-        }
 
+        }
 
         catch (FileNotFoundException e) {
             System.out.println("Error opening the file " + fileName);
@@ -127,5 +111,6 @@ public class ReadSearch {
 
 
     }
+
 
 }
