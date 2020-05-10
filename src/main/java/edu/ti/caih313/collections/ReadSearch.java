@@ -97,7 +97,7 @@ public class ReadSearch {
                /* for (int i = 0; i < sentences.size(); i++){
                     System.out.println(sentences.get(i));
                 }*/
-                System.out.println(oneSentenceOfWords.get(wordNum));
+                System.out.println(oneSentenceOfWords.get(wordNum-1));
                 System.exit(0);
             } catch (InputMismatchException ime) {
                 System.out.println("input mismatch exception");
